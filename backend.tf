@@ -1,7 +1,7 @@
 terraform {
   backend s3{
-    bucket = "terra-cloud-aksmr"
+    bucket ="jenkins-ansible-terra"
     key = "remote.tfstate"
-    region = "us-west-1"
+    region = "ap-south-1"
   }
 }
