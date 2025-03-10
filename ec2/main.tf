@@ -28,8 +28,8 @@ resource "aws_security_group" "webserver_access" {
 }
 
 resource "aws_instance" "ourfirst" {
-  ami           = "ami-07d2649d67dbe8900"
-  availability_zone = "us-west-1a"
+  ami           = "ami-00bb6a80f01f03502"
+  availability_zone = "ap-south-1"
   instance_type = "t2.micro"
   user_data = filebase64("install_apache.sh")
   vpc_security_group_ids = [aws_security_group.webserver_access.id]  # Correct reference
