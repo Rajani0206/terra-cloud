@@ -36,7 +36,7 @@ pipeline {
                                     rm -rf terra-cloud
                                 fi
                                 echo "Cloning the repository..."
-                                git clone "https://github.com/Rajani0206/terra-cloud.git"
+                                git clone "https://github.com/AkshathaMR/terra-cloud.git"
                             '''
                         }
                     }
