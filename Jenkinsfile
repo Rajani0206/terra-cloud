@@ -12,8 +12,8 @@ pipeline {
      environment {
         AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
         AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
-        AWS_DEFAULT_REGION    = "us-west-1"
-        SSH_KEY = "/home/ubuntu/.ssh/aksmr-tf.pem"  // Replace with your private key
+        AWS_DEFAULT_REGION    = "ap-south-1"
+        SSH_KEY = "/home/ubuntu/.ssh/terraform.pem"  // Replace with your private key
         ANSIBLE_PLAYBOOK = "webserver.yml"
         GIT_REPO = "https://github.com/AkshathaMR/Ansible_Playbook.git"
     }
@@ -36,7 +36,7 @@ pipeline {
                                     rm -rf terra-cloud
                                 fi
                                 echo "Cloning the repository..."
-                                git clone "https://github.com/AkshathaMR/terra-cloud.git"
+                                git clone "https://github.com/Rajani0206/terra-cloud.git"
                             '''
                         }
                     }
@@ -123,7 +123,7 @@ pipeline {
 
        stage('Run Ansible Playbook from Local') {
         steps {
-            withCredentials([sshUserPrivateKey(credentialsId: 'ansible-key', keyFileVariable: 'SSH_KEY')]) {
+            withCredentials([sshUserPrivateKey(credentialsId: 'terraform', keyFileVariable: 'SSH_KEY')]) {
                 sh """
                     export ANSIBLE_HOST_KEY_CHECKING=False
                     ansible-playbook -i "${EC2_IP}," --private-key "${SSH_KEY}" -u ubuntu webserver.yml
